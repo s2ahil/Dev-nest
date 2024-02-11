@@ -1,13 +1,14 @@
 "use client"
 
-
-
+import dynamic from 'next/dynamic';
 import React from 'react'
-import '../../node_modules/react-quill/dist/quill.snow.css'
-import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css'; 
+
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react";
 import { useSession } from 'next-auth/react'
+
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
 
 const CreatePost = () => {
