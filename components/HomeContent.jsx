@@ -8,11 +8,14 @@ export const ContentCard = () => {
     // const [loading, setLoading] = useState(true)
  const fetchPosts = async () => {
 
-            console.log("runned");
+            console.log("runned 1");
             try {
                 const response = await fetch('/api/post');
                 const data = await response.json();
                 setPosts(data)
+
+                console.log(" response",response)
+                console.log("runned2")
             } catch (error) {
                 console.error('Error fetching posts:', error);
                 
