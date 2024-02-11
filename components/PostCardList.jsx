@@ -17,9 +17,9 @@ const PostCardList = ({ post }) => {
                             <Image class="rounded-full  "
                                 width={37}
                                 height={37}
-                                src={item.creator.image} alt="profile picture" />
+                                src={item.creator?.image} alt="profile picture" />
                             <div class="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
-                                <div>{item.creator.username}</div>
+                                <div>{item.creator?.username}</div>
                             </div>
 
                         </div>
