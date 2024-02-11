@@ -12,7 +12,7 @@ export default function Home() {
 
        
 
-        <div className="flex flex-col gap-5 max-w-[50rem] md:w-[50rem]">
+        <div className="flex flex-col gap-5 max-w-[50rem] md:w-[50rem] h-full">
    
    <div className="font-bold text-black m-2 text-xl text-center">Your Feed</div>
 
