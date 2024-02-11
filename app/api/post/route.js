@@ -7,7 +7,7 @@ export const GET = async (request) => {
  
     await connectToDB();
 
-    const posts = await Post.find({}).populate('creator');
+    const posts = await Post.find().populate('creator');
 
     console.log(posts)
     return new Response(JSON.stringify(posts),{
