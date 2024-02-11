@@ -14,7 +14,7 @@ export const ContentCard = () => {
                 const data = await response.json();
                 setPosts(data)
 
-                console.log(" response",response)
+                console.log(" response",data)
                 console.log("runned2")
             } catch (error) {
                 console.error('Error fetching posts:', error);
