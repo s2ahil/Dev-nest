@@ -1,26 +1,15 @@
 "use client"
 
-<<<<<<< HEAD
 import dynamic from 'next/dynamic';
 import React from 'react'
 import 'react-quill/dist/quill.snow.css'; 
-=======
-
-import dynamic from 'next/dynamic';
-import React from 'react'
-
->>>>>>> 163839940aac630253938274306915cadcb9479c
 
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react";
 import { useSession } from 'next-auth/react'
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-<<<<<<< HEAD
 
-=======
-import 'react-quill/dist/quill.snow.css'; 
->>>>>>> 163839940aac630253938274306915cadcb9479c
 
 const CreatePost = () => {
 
