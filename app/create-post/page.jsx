@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useSession } from 'next-auth/react'
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
+import 'react-quill/dist/quill.snow.css'; 
 
 const CreatePost = () => {
 
