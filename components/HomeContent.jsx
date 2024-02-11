@@ -6,9 +6,7 @@ import PostCardList from './PostCardList'
 export const ContentCard = () => {
     const [posts, setPosts] = useState([])
     // const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        const fetchPosts = async () => {
+ const fetchPosts = async () => {
 
             console.log("runned");
             try {
@@ -20,6 +18,8 @@ export const ContentCard = () => {
                 
             } 
         }
+    useEffect(() => {
+       
         
         fetchPosts();
     }, [])
