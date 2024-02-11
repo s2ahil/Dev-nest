@@ -35,11 +35,7 @@ const BlogContent = () => {
     const [storedComments, setStoredComments] = useState([]);
     const { id } = useParams()
 
-
-
-   
-    useEffect(() => {
-        const fetchPostById = async () => {
+ const fetchPostById = async () => {
             try {
                 const response = await fetch(`/api/user/${id}`);
                 if (!response.ok) {
@@ -55,6 +51,10 @@ const BlogContent = () => {
 
 
         };
+
+   
+    useEffect(() => {
+       
 
         fetchPostById();
     }, []);
