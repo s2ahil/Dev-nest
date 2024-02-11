@@ -9,6 +9,8 @@ export const ContentCard = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
+
+            console.log("runned");
             try {
                 const response = await fetch('/api/post');
                 const data = await response.json();
