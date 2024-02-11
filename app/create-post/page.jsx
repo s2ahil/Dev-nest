@@ -1,7 +1,7 @@
 "use client"
 
 
-import styles from "./writePage.module.css"
+
 import React from 'react'
 import '../../node_modules/react-quill/dist/quill.snow.css'
 import ReactQuill from "react-quill";
