@@ -18,7 +18,7 @@ export const connectToDB= async ()=>{
         await mongoose.connect(process.env.MONGODB_URI,{
             dbName:'devs_nest',
             useNewUrlParser: true,  // <== add this option to get a helpful error
-            useUnifiedTopology: true // <== add this option to get a helpful error on
+        
         })
     }
     catch(error){
