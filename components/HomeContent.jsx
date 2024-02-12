@@ -1,41 +1,36 @@
 "use client"
 
-import React, { useState, useEffect } from 'react'
-import PostCardList from './PostCardList'
+import React, { useState, useEffect } from 'react';
+import PostCardList from './PostCardList';
 
 export const ContentCard = () => {
-    const [posts, setPosts] = useState([])
-    // const [loading, setLoading] = useState(true)
- const fetchPosts = async () => {
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-            console.log("runned 1");
+    useEffect(() => {
+        const fetchPosts = async () => {
             try {
                 const response = await fetch('/api/post');
                 const data = await response.json();
-                setPosts(data)
-
-                console.log(" response",data)
-                console.log("runned2")
+                setPosts(data);
             } catch (error) {
                 console.error('Error fetching posts:', error);
-                
-            } 
+            } finally {
+                setLoading(false);
+            }
         }
-    useEffect(() => {
-       
-        
         fetchPosts();
-    }, [])
-
-    console.log(posts)
+    }, []);
 
     return (
         <div className='flex flex-col gap-5 '>
-           
+            {loading ? (
+                <div className="text-center h-full w-full text-xl font-black">Loading...</div>
+            ) : (
                 <div className="grid mb-8 border border-gray-200 rounded-lg shadow-sm bg-white p-5 gap-2">
-                    <PostCardList key={posts._id} post={posts}></PostCardList>
+                    <PostCardList post={posts}></PostCardList>
                 </div>
-            
+            )}
         </div>
-    )
+    );
 }
