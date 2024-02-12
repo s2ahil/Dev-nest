@@ -9,8 +9,11 @@ export const GET = async (req, context) => {
         console.log("params id", id)
         // Assuming the post ID is passed in the request parameters
 
-        const post = await Post.findById(id).populate('creator');;
-
+        const post = await Post.findById(id)
+        .populate('creator')
+  
+        
+        await post.populate('comments.user')
         if (!post) {
             return new Response("Post not found", {
                 status: 404
@@ -35,13 +38,13 @@ export const POST = async (req, context) => {
 
     try {
         const { id } = context.params;
-        const { text } = await req.json();
+        const { text,userId } = await req.json();
         console.log("post reached", id)
         await connectToDB();
 
 
         // Find the post by its ID
-        const post = await Post.findById(id);
+        let post = await Post.findById(id)
 
         if (!post) {
             return new Response("Post not found", {
@@ -50,9 +53,10 @@ export const POST = async (req, context) => {
         }
 
         // Add the comment to the post
-        post.comments.push({ text });
-        // Save the updated post
-        await post.save();
+        post.comments.push({ text , user: userId });
+        await post.populate('comments.user')
+ 
+        await post.save()
 
         // Return the newly created comment
         return new Response(JSON.stringify(post.comments[post.comments.length - 1]), {
