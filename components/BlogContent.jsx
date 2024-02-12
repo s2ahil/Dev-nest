@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import '../node_modules/react-quill/dist/quill.snow.css'
 import ReactQuill from "react-quill";
 import { useParams } from 'next/navigation'
-
+import Image from 'next/image';
 const quillModules = {
     toolbar: [
 
@@ -35,7 +35,11 @@ const BlogContent = () => {
     const [storedComments, setStoredComments] = useState([]);
     const { id } = useParams()
 
- const fetchPostById = async () => {
+
+
+   
+    useEffect(() => {
+        const fetchPostById = async () => {
             try {
                 const response = await fetch(`/api/user/${id}`);
                 if (!response.ok) {
@@ -52,24 +56,20 @@ const BlogContent = () => {
 
         };
 
-   
-    useEffect(() => {
-       
-
         fetchPostById();
     }, []);
 
+    console.log("post",post)
+
     const handleCommentSubmit = async () => {
 
-
-    
         try {
             const response = await fetch(`/api/user/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ text: comment })
+                body: JSON.stringify({ text: comment,  userId: session?.user.id, })
             });
             if (!response.ok) {
                 throw new Error('Failed to add comment');
@@ -82,7 +82,7 @@ const BlogContent = () => {
         }
     }
 
-    console.log("post",post)
+    console.log("comments",storedComments)
     return (
         <div className='flex flex-col gap-5 p-4'>
 
@@ -127,7 +127,21 @@ const BlogContent = () => {
                 <div>
                 <div className='flex flex-col gap-2 rounded-xl'>
                     {storedComments.map((comment) => (
-                        <div className="bg-gray-100 p-2 " key={comment._id}>{comment.text}</div>
+                        <div className="bg-gray-100 p-3 flex flex-col gap-4" key={comment._id}>
+
+                        <div className='flex gap-4 items-center'>
+                        <Image class="rounded-full  "
+                                width={37}
+                                height={37}
+                                src={comment.user?.image} alt="profile picture" />
+                        <div>{comment.user?.username}</div>
+                        </div>
+                       
+
+
+                        <div className='text-black ml-2 text-lg'>- {comment.text}</div>
+                        
+                        </div>
                     ))}
                     </div>
                 </div>
