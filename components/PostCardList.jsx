@@ -25,17 +25,17 @@ const PostCardList = ({ post }) => {
                         </div>
 
                         <Link href={`/user/${item._id}`} className=''>
-                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white hover:text-blue-500">{item.title}</h5>
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white hover:text-blue-500">{item?.title}</h5>
                         </Link>
 
 
                         <div className='text-gray-300'>
-                            {item.tag.includes(',') ? (
-                                item.tag.split(',').map((tag, index) => (
+                            {item?.tag.includes(',') ? (
+                                item?.tag.split(',').map((tag, index) => (
                                     <span key={index}>{tag.trim()} </span>
                                 ))
                             ) : (
-                                <span>{item.tag}</span>
+                                <span>{item?.tag}</span>
                             )}
 
                         </div>
@@ -47,7 +47,7 @@ const PostCardList = ({ post }) => {
                                 </svg> 
                             </div>
                             <div className='flex pt-1'>  <p className='text-white '>
-                                {item.likesCount}</p></div>
+                                {item?.likesCount}</p></div>
 
                         </div>
                     </div>
