@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ContentCard } from "@/components/HomeContent";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
 // home page
 export default function Home() {
   return (
