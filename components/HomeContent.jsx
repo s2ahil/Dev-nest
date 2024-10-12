@@ -10,7 +10,7 @@ export const ContentCard = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('/api/post');
+                const response = await fetch('/api/post',{ cache: 'no-store' });
                 const data = await response.json();
                 setPosts(data);
             } catch (error) {
